@@ -1,7 +1,7 @@
 require('dotenv').config()
 const mongoose = require ('mongoose');
 //mongodb://localhost:port/database Name
-mongoose.connect (process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/snakesladder-manager-api', {
+mongoose.connect (process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/pharmacy_app', {
 	useNewUrlParser : true,
 	useCreateIndex : true,
 	useFindAndModify : false,
@@ -11,3 +11,5 @@ mongoose.connect (process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/snakesla
 		return console.log ('Unable to connect to Database')
 	console.log ('Connection Successful')
 })
+
+mongodb+srv://bparul:snake_ladder@cluster0.7rhex.mongodb.net/test/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=true
