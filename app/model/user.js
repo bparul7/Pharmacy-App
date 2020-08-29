@@ -27,16 +27,20 @@ const userSchema = new mongoose.Schema ({
 				throw new Error ('Email not valid')
 		}
 	},
-	password : {
+	profile : {
+		type : String,
+		required : true,
+		trim : true
+	},
+	id_image : {
 		type : String,
 		required : true,
 		trim : true,
-		validate (value) {
-			if (value.length <= 6)
-				throw new Error ('Password length should be greater than 6')
-			if (value.toLowerCase().includes("password"))
-				throw new Error ("Password shouldnot include word password")
-		}
+	},
+	address : {
+		type : String,
+		required : true,
+		trim : true,
 	},
 	tokens : [{
 		token : {
@@ -59,25 +63,25 @@ userSchema.methods.generateToken = async function () {
 	}
 }
 
-userSchema.statics.loginCredentials = async (email, password) => {
+userSchema.statics.loginCredentials = async (email) => {
 	const user = await User.findOne ({email : email});
 	if (!user) {
 		throw new Error ("Email not found, Sign In first");
 	}
-	const isMatch = await bcrypt.compare (password , user.password);
-	if (!isMatch) {
-		throw new Error ("Incorrect Password, Try some other password");
-	}
+	// const isMatch = await bcrypt.compare (password , user.password);
+	// if (!isMatch) {
+	// 	throw new Error ("Incorrect Password, Try some other password");
+	// }
 	return user;
 }
 
-userSchema.pre ('save', async function (next) {
-	const user = this;
-	if (user.isModified ('password')) {
-		user.password = await bcrypt.hash (user.password, 8);
-	}
-	next();
-})
+// userSchema.pre ('save', async function (next) {
+// 	const user = this;
+// 	if (user.isModified ('password')) {
+// 		user.password = await bcrypt.hash (user.password, 8);
+// 	}
+// 	next();
+// })
 
 const User = mongoose.model ('User', userSchema)
 

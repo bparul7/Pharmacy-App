@@ -30,7 +30,7 @@ route.post ('/users', async (req, res) => {
 //login users
 route.post ('/users/login', async(req, res) => {
 	try {
-		const user = await User.loginCredentials (req.body.email, req.body.password);
+		const user = await User.loginCredentials (req.body.email);
 		const token = await user.generateToken ();
 		const ret = {
 			status : 1,
