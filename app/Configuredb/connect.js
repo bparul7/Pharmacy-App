@@ -12,4 +12,3 @@ mongoose.connect (process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/pharmacy
 	console.log ('Connection Successful')
 })
 
-mongodb+srv://bparul:snake_ladder@cluster0.7rhex.mongodb.net/test/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=true
