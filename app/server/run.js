@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require ('express');
 const app = express ();
 require ('../Configuredb/connect.js');
+require ('../UpdateDatabase/add.js');
 const user_route = require ('../route/user_route.js');
 const port = process.env.PORT || 5000;
 

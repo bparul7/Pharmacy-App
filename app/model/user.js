@@ -28,14 +28,10 @@ const userSchema = new mongoose.Schema ({
 		}
 	},
 	profile : {
-		type : String,
-		required : true,
-		trim : true
+		type : Buffer
 	},
 	id_image : {
-		type : String,
-		required : true,
-		trim : true,
+		type : Buffer
 	},
 	address : {
 		type : String,
