@@ -18,6 +18,16 @@ route.post ('/users/me/createorder', auth, async (req, res) => {
 	}
 })
 
+route.get ('/allorders', async (req, res) => {
+	try {
+		const result = await Order.find ({})
+		res.send (result)
+	}
+	catch (e) {
+		res.send (e.message)
+	}
+})
+
 route.get ('/allpendingorder', async (req, res) => {
 	try {
 		const result = await Order.find ({status : "no"})
